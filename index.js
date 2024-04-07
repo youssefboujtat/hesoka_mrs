@@ -1,4 +1,5 @@
-console.log('[ ℹ️ ] Iniciando...');
+console.log('✅ㅤstarting...');
+console.log('🧿 𝑴𝑹𝑺 ❤️ 𝑯𝑬𝑺𝑺𝑶𝑲𝑨 🍀');
 import {join, dirname} from 'path';
 import {createRequire} from 'module';
 import {fileURLToPath} from 'url';
@@ -13,11 +14,12 @@ const {name, author} = require(join(__dirname, './package.json'));
 const {say} = cfonts;
 const rl = createInterface(process.stdin, process.stdout);
 
-say('The Mystic\nBot', {
+
+say('MRS - Bot\nWhatsApp Bot MD', {
   font: 'chrome',
   align: 'center',
   gradient: ['red', 'magenta']});
-say(`Bot creado por Bruno Sobrino`, {
+say(`Bot mrs hesoka`, {
   font: 'console',
   align: 'center',
   gradient: ['red', 'magenta']});
@@ -32,17 +34,17 @@ function start(file) {
   isRunning = true;
   const args = [join(__dirname, file), ...process.argv.slice(2)];
 
-  /** say('[ ℹ️ ] Escanea el código QR o introduce el código de emparejamiento en WhatsApp.', {
+  say('Ajuste la pantalla para escanear el codigo QR', {
     font: 'console',
     align: 'center',
-    gradient: ['red', 'magenta']}); **/
+    gradient: ['red', 'magenta']});
 
   setupMaster({
     exec: args[0],
     args: args.slice(1)});
   const p = fork();
   p.on('message', (data) => {
-    console.log('[RECIBIDO]', data);
+    console.log('[RECEIVED]', data);
     switch (data) {
       case 'reset':
         p.process.kill();
@@ -56,7 +58,7 @@ function start(file) {
   });
   p.on('exit', (_, code) => {
     isRunning = false;
-    console.error('[ ℹ️ ] Ocurrio un error inesperado:', code);
+    console.error('❎ㅤerror:', code);
 
     p.process.kill();
     isRunning = false;
@@ -78,3 +80,4 @@ function start(file) {
   }
 }
 start('main.js');
+
